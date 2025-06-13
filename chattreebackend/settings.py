@@ -25,7 +25,6 @@ import secrets
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-9i#_=)4-#h5xen@g1on^wg+(274efcakx2jh_dtor$n4k_60@g'
 JWT_SECRET = "your-jwt-secret-key"
-# JWT_SECRET = secrets.token_hex(32)  # Generate a secure random secret key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False

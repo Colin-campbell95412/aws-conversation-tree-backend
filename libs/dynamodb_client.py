@@ -7,10 +7,10 @@ if USE_LOCAL_DYNAMODB:
     # Local testing (DynamoDB Local)
     dynamodb = boto3.resource(
         "dynamodb",
-        endpoint_url="http://localhost:8000",
-        region_name="ap-southeast-2",
-        aws_access_key_id="dummy",
-        aws_secret_access_key="dummy"
+        endpoint_url="http://localhost:4566",
+        region_name="us-east-1",
+        aws_access_key_id="test",
+        aws_secret_access_key="test" # Use test credentials for local testing
     )
 else:
     # Production (real AWS DynamoDB via Gateway Endpoint or public access)
