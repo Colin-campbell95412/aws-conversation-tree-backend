@@ -1,14 +1,8 @@
 import boto3
+from libs.dynamodb_client import dynamodb
 
 def create_users_table():
     # Initialize a session using Amazon DynamoDB
-    dynamodb = boto3.resource(
-        'dynamodb', 
-        region_name='us-east-1',
-        aws_access_key_id='test',
-        aws_secret_access_key='test',
-        endpoint_url='http://localhost:4566'  # Change endpoint URL as needed
-    )  # Change region as needed
 
     # Create the DynamoDB table
     table = dynamodb.create_table(

@@ -1,6 +1,7 @@
 import boto3
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 import uuid
+from libs.dynamodb_client import dynamodb
 
 def add_user_to_dynamodb(table_name, user_info):
     """
@@ -11,13 +12,6 @@ def add_user_to_dynamodb(table_name, user_info):
     """
     try:
         # Initialize a DynamoDB resource
-        dynamodb = boto3.resource(
-            'dynamodb', 
-            region_name='us-east-1',
-            aws_access_key_id='test',
-            aws_secret_access_key='test',
-            endpoint_url='http://localhost:4566'  # Change endpoint URL as needed
-        )  # Change region as needed
         table = dynamodb.Table(table_name)
 
         # Add user information to the table

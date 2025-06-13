@@ -2,18 +2,11 @@ import boto3
 import hashlib
 import uuid
 from boto3.dynamodb.conditions import Attr
-
-dynamodb = boto3.resource(
-        'dynamodb', 
-        region_name='us-east-1',
-        aws_access_key_id='test',
-        aws_secret_access_key='test',
-        endpoint_url='http://localhost:4566' # Local DynamoDB endpoint
-    )  # Change region as needed
+from libs.dynamodb_client import dynamodb
 
 table = dynamodb.Table('docs')
 
-# def hash_password(password):
+# def hash_paord(password):
 #     return hashlib.sha256(password.encode()).hexdigest()
 
 def create_doc(title, description):

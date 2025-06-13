@@ -1,13 +1,8 @@
 import boto3
 import uuid
 
-dynamodb = boto3.resource(
-        'dynamodb', 
-        region_name='us-east-1',
-        aws_access_key_id='test',
-        aws_secret_access_key='test',
-        endpoint_url='http://localhost:4566' # Local DynamoDB endpoint
-    )  # Change region as needed
+from libs.dynamodb_client import dynamodb
+
 conversations_table = dynamodb.Table('conversations')
 
 def generate_convo_id():
