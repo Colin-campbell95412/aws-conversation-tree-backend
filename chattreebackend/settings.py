@@ -57,7 +57,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "http://your-frontend-domain.com",
+    "http://conversation-tree-bucket.s3-website-ap-southeast-2.amazonaws.com",
     "http://3.107.85.17:5173",
     "http://localhost:8000",
     "http://3.107.85.17:8000",

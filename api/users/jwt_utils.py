@@ -1,4 +1,5 @@
 import jwt
+print(jwt.__file__)  # It should point to site-packages/pyjwt/
 import datetime
 from django.conf import settings
 
