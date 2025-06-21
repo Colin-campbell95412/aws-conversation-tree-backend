@@ -1,5 +1,9 @@
 import jwt
 print(jwt.__file__)  # It should point to site-packages/pyjwt/
+<<<<<<< HEAD
+=======
+print(jwt.encode)
+>>>>>>> 307bd68 (Adding Docs and Labs in admin panel done)
 import datetime
 from django.conf import settings
 

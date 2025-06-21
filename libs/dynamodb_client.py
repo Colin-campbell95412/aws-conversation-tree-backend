@@ -16,6 +16,6 @@ else:
     # Production (real AWS DynamoDB via Gateway Endpoint or public access)
     dynamodb = boto3.resource(
         "dynamodb",
-        region_name="ap-southeast-2"  # Your AWS region
+        region_name="eu-north-1"				# "us-southeast-2"  # Your AWS region
         # No endpoint_url needed
     )
