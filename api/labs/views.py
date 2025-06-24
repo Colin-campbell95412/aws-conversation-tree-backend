@@ -27,8 +27,8 @@ def add_or_edit_lab_view(request):
                     'status': 'fail',
                     'message': 'This title already exists'
                 })
-            print('Creating lab:', data)
             create_lab(data['title'], data['description'])
+            print('Created lab:', data)
             return JsonResponse({
                 'status': 'success',
                 'message': 'Lab created successfully',

@@ -1,9 +1,6 @@
 import jwt
 print(jwt.__file__)  # It should point to site-packages/pyjwt/
-<<<<<<< HEAD
-=======
 print(jwt.encode)
->>>>>>> 307bd68 (Adding Docs and Labs in admin panel done)
 import datetime
 from django.conf import settings
 
@@ -36,9 +33,9 @@ def generate_jwt(username):
     
 def decode_jwt(token):
     try:
-        print('Decoding JWT token:', token)
+        # print('Decoding JWT token:', token)
         payload = jwt.decode(token, settings.JWT_SECRET, algorithms=['HS256'])
-        print('Decoded payload:', payload)
+        # print('Decoded payload:', payload)
         # Return the username from the payload  
         return payload['username']
     except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):

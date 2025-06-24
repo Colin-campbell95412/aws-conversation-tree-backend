@@ -13,9 +13,14 @@ def signup(request):
         # data = json.loads(request.body)
         data = request.POST.dict()  # Assuming request.POST is a dictionary
         print('Data:', data)
+        role = data.get('role', 'user')
         if data.get('user_id'):
             print('Updating user:', data)
-            update_user(data['user_id'], {'password': data['password'], 'username': data['username']})
+            update_data = {'password': data['password'], 'username': data['username'], 'role': role}
+            if 'role' in data:
+                update_data['role'] = data['role']
+            print('Updating user:', update_data)
+            update_user(data['user_id'], update_data)
             return JsonResponse({
                 'status': 'success',
                 'message': 'User updated successfully',
@@ -35,7 +40,7 @@ def signup(request):
                     # }
                 })
             print('Creating user:', data)
-            create_user(data['username'], data['password'])
+            create_user(data['username'], data['password'], role)
             return JsonResponse({
                 'status': 'success',
                 'message': 'User created successfully',
@@ -59,7 +64,8 @@ def login(request):
                 'status': 'success',
                 'data': {
                     'user_info': user,
-                    'token': token
+                    'token': token,
+                    'role': user.get('role', 'user')
                 }
             })
         return JsonResponse({'status': 'error', 'message': 'Invalid credentials'})
@@ -86,6 +92,9 @@ def get_users(request):
 def update_user_view(request, user_id):
     if request.method == 'PUT':
         data = json.loads(request.body)
+        # Remove 'role' if present in update data
+        if 'role' in data:
+            data.pop('role')
         update_user(user_id, data)
         return JsonResponse({'message': 'User updated'})
 
