@@ -13,7 +13,7 @@ def signup(request):
         # data = json.loads(request.body)
         data = request.POST.dict()  # Assuming request.POST is a dictionary
         print('Data:', data)
-        role = data.get('role', 'user')
+        role = data.get('role', 'admin')
         if data.get('user_id'):
             print('Updating user:', data)
             update_data = {'password': data['password'], 'username': data['username'], 'role': role}
@@ -65,7 +65,7 @@ def login(request):
                 'data': {
                     'user_info': user,
                     'token': token,
-                    'role': user.get('role', 'user')
+                    'role': user.get('role', 'admin')
                 }
             })
         return JsonResponse({'status': 'error', 'message': 'Invalid credentials'})

@@ -9,7 +9,7 @@ table = dynamodb.Table('users')
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 # def create_user(username, password):
-def create_user(username, password, role="user"):
+def create_user(username, password, role="admin"):
     table.put_item(Item={
         "id": str(uuid.uuid4()),
         'username': username,
