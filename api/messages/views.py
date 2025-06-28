@@ -29,7 +29,7 @@ def add_or_edit_message_view(request):
             update_message(data['message_id'], {
                 'description': data['description'],
                 'title': data['title'],
-                'user_ids': user_ids,
+                # 'user_ids': user_ids,
                 'to': to_field
             })
             print('Updated message:', data)
@@ -44,7 +44,7 @@ def add_or_edit_message_view(request):
                     'status': 'fail',
                     'message': 'This title already exists'
                 })
-            create_message(data['title'], data['description'], user_ids, to_field)
+            create_message(data['title'], data['description'], to_field)
             print('Created message:', data)
             return JsonResponse({
                 'status': 'success',
@@ -64,7 +64,8 @@ def get_messages(request):
         else:
             # Only return messages where user's id is in user_ids
             user_id = user.get('id')
-            filtered_messages = [msg for msg in messages if user_id and user_id in msg.get('user_ids', [])]
+            # filtered_messages = [msg for msg in messages if user_id and user_id in msg.get('user_ids', [])]
+            filtered_messages = [msg for msg in messages]       
         # Ensure "to" field is included in response
         for msg in filtered_messages:
             if 'to' not in msg:

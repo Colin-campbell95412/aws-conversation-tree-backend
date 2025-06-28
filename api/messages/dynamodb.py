@@ -6,14 +6,14 @@ from libs.dynamodb_client import dynamodb
 
 table = dynamodb.Table('messages')
 
-def create_message(title, description, user_ids=None, to='All'):
-    if user_ids is None:
-        user_ids = []
+def create_message(title, description, to='All'):
+    # if user_ids is None:
+    #     user_ids = []
     table.put_item(Item={
         "id": str(uuid.uuid4()),
         'title': title,
         'description': description,
-        'user_ids': user_ids,
+        # 'user_ids': user_ids,
         'to': to
     })
 
